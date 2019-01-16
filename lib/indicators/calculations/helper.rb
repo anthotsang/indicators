@@ -44,9 +44,9 @@ module Indicators
         # Map in case array is ["1", "2"] instead of [1, 2]. This usually happens when getting data from input forms.
         # Specify default as Float or Int, to indicate what is expected from the param.
         if default.is_a?(Integer)
-          parameters = parameters.map(&:to_i) 
+          parameters = parameters.map(&:to_i)
         elsif default.is_a?(Float)
-          parameters = parameters.map(&:to_f) 
+          parameters = parameters.map(&:to_f)
         end
 
         if parameters[i] == nil || parameters[i] == 0
@@ -87,6 +87,12 @@ module Enumerable
 
   def standard_deviation
     return Math.sqrt(self.sample_variance)
+  end
+
+  def mean_deviation
+    m = self.mean
+    sum_of_distances = self.inject(0){|accum, i| accum + (i-m).abs }
+    return sum_of_distances / self.length
   end
 
 end

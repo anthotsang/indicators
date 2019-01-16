@@ -15,6 +15,7 @@ require "indicators/calculations/macd.rb"
 require "indicators/calculations/rsi.rb"
 require "indicators/calculations/stochrsi.rb"
 require "indicators/calculations/sto.rb"
+require "indicators/calculations/cci.rb"
 
 module Indicators
 end

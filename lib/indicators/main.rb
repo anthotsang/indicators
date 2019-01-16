@@ -33,6 +33,8 @@ module Indicators
         @params << Indicators::Helper.get_parameters(all_params, 0, 14)
         @params << Indicators::Helper.get_parameters(all_params, 1, 3)
         @params << Indicators::Helper.get_parameters(all_params, 2, 3)
+      when :cci
+        @params = Indicators::Helper.get_parameters(all_params, 0, 20)
       end
 
       # This is a Securities gem hash.
@@ -53,6 +55,7 @@ module Indicators
                   when :rsi then Indicators::Rsi.calculate(data, @params)
                   when :stochrsi then Indicators::StochRsi.calculate(data, @params)
                   when :sto then Indicators::Sto.calculate(data, @params)
+                  when :cci then Indicators::Cci.calculate(data, @params)
 			          end
       return @output
     end

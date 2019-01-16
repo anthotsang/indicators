@@ -97,6 +97,10 @@ describe Indicators::Data do
 			it "good STO params are specified" do
 				expect { @my_data.calc(:type => :sto, :params => [3, 5, 4]) }.not_to raise_error
 			end
+			it "good CCI params are specified" do
+				# expect(@my_data.calc(:type => :cci, :params => 20).output).to eq(5)
+				expect { @my_data.calc(:type => :cci, :params => 20) }.not_to raise_error
+			end
 		end
 	end
 
