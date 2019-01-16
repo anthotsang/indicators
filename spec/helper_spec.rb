@@ -14,12 +14,12 @@ describe Indicators::Helper do
 		end
 	end
 	it "BB should accept float as multiplier" do
-		@my_data.calc(:type => :bb, :params => [2, 2.5]).output[4][1].should > @my_data.calc(:type => :bb, :params => [2, 2]).output[4][1]
-		@my_data.calc(:type => :bb, :params => [2, 2.5]).output[4][2].should < @my_data.calc(:type => :bb, :params => [2, 2]).output[4][2]
+		expect(@my_data.calc(:type => :bb, :params => [2, 2.5]).output[4][1]).to be > @my_data.calc(:type => :bb, :params => [2, 2]).output[4][1]
+		expect(@my_data.calc(:type => :bb, :params => [2, 2.5]).output[4][2]).to be < @my_data.calc(:type => :bb, :params => [2, 2]).output[4][2]
 	end
 	it "BB should not accept float as periods" do
-		@my_data.calc(:type => :bb, :params => [2.9, 2.5]).output.should == @my_data.calc(:type => :bb, :params => [2, 2.5]).output
-		@my_data.calc(:type => :bb, :params => [2.9, 2.5]).output[4][1].should > @my_data.calc(:type => :bb, :params => [2, 2]).output[4][1]
+		expect(@my_data.calc(:type => :bb, :params => [2.9, 2.5]).output).to eq(@my_data.calc(:type => :bb, :params => [2, 2.5]).output)
+		expect(@my_data.calc(:type => :bb, :params => [2.9, 2.5]).output[4][1]).to be > @my_data.calc(:type => :bb, :params => [2, 2]).output[4][1]
 	end
 
 end

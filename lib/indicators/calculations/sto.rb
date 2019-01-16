@@ -13,7 +13,7 @@
     # Full %D = X-period SMA of Full %K
     #
     # Input 14, 3, 5
-    # Returns [full %K, full %D]
+    # Returns [%K, full %K, full %D]
     def self.calculate data, parameters
       k1_periods = parameters[0]
       k2_periods = parameters[1]
@@ -32,7 +32,7 @@
           k1[index] = (adj_close - lows[start..index].min) / (highs[start..index].max - lows[start..index].min) * 100
           if index+2 >= k1_periods + k2_periods
             k2[index] = Indicators::Sma.calculate(k1[(k1_periods-1)..index], k2_periods).last
-          else 
+          else
             k2[index] = nil
           end
           if index+3 >= k1_periods + k2_periods + d_periods

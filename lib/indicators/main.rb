@@ -26,6 +26,8 @@ module Indicators
         @params << Indicators::Helper.get_parameters(all_params, 2, 9)
       when :rsi
         @params = Indicators::Helper.get_parameters(all_params, 0, 14)
+      when :stochrsi
+        @params = Indicators::Helper.get_parameters(all_params, 0, 14)
       when :sto
         @params = Array.new
         @params << Indicators::Helper.get_parameters(all_params, 0, 14)
@@ -49,6 +51,7 @@ module Indicators
                   when :bb then Indicators::Bb.calculate(data, @params)
                   when :macd then Indicators::Macd.calculate(data, @params)
                   when :rsi then Indicators::Rsi.calculate(data, @params)
+                  when :stochrsi then Indicators::StochRsi.calculate(data, @params)
                   when :sto then Indicators::Sto.calculate(data, @params)
 			          end
       return @output
